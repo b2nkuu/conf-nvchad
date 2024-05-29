@@ -6,7 +6,6 @@ return {
       require "configs.conform"
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -14,7 +13,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -27,7 +25,6 @@ return {
       },
     },
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -40,7 +37,6 @@ return {
       },
     },
   },
-
   {
     "kdheepak/lazygit.nvim",
     cmd = {
@@ -68,6 +64,32 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
-    config = true,
+    config = function()
+      require("flutter-tools").setup {
+        lsp = {
+          settings = {
+            lineLength = 120,
+          },
+        },
+      }
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = false,
+    config = function()
+      require("gitsigns").setup {
+        numhl = true,
+        current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = "eol",
+          delay = 200,
+          ignore_whitespace = false,
+          virt_text_priority = 200,
+        },
+        current_line_blame_formatter = "<author>, <author_time:%Y/%m/%d %H:%M> - <summary>",
+      }
+    end,
   },
 }

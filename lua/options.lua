@@ -1,4 +1,4 @@
 require "nvchad.options"
 
-local o = vim.o
-o.cursorlineopt = "both" -- to enable cursorline!
+vim.o.cursorlineopt = "both"
+vim.api.nvim_set_option_value("colorcolumn", "120", {})
